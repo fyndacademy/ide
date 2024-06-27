@@ -1,0 +1,17 @@
+# Use the official nginx image as the base image
+FROM nginx:alpine
+
+# Create the new directory for the static content
+RUN mkdir -p /usr/share/nginx/html/online-compiler
+
+# Copy the static content to the new directory
+COPY . /usr/share/nginx/html/online-compiler
+
+# Update the nginx configuration to serve from the new directory
+RUN sed -i 's|root /usr/share/nginx/html;|root /usr/share/nginx/html/online-compiler;|' /etc/nginx/conf.d/default.conf
+
+# Expose port 80
+EXPOSE 80
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
