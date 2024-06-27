@@ -1,4 +1,4 @@
-const API_KEY = ""; // Get yours for free at https://judge0.com/ce and https://judge0.com/extra-ce
+const API_KEY = "1bafe8a1d4msh547385e1b905745p1e919djsnf1284ba36df4"; // Get yours for free at https://judge0.com/ce and https://judge0.com/extra-ce
 
 const AUTH_HEADERS = API_KEY ? {
     "X-RapidAPI-Key": API_KEY
@@ -209,6 +209,7 @@ function run() {
     };
 
     var sendRequest = function(data) {
+        console.log(AUTH_HEADERS)
         timeStart = performance.now();
         $.ajax({
             url: apiUrl + `/submissions?base64_encoded=true&wait=${wait}`,
